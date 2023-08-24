@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 
-const userAndSystemContext = createContext();
+const userAndSystemContext = createContext({});
 
 function Providers({ children }) {
   const [user, setUser] = useState(null);
