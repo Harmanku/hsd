@@ -1,18 +1,20 @@
 "use client";
 
-import { useUserContext } from "@/app/providers";
+
+import { useUserContext } from "../app/Providers";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+
 export default function RouteGuard() {
     const userSystem = useUserContext();
-
+  
     const router = useRouter();
     useEffect(() => {
     
     
     if (!userSystem?.user || !userSystem?.system) {        
-        //router.push('/logIn');        
+        router.push('/logIn');        
     }
 
     return () => {      
