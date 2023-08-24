@@ -4,7 +4,7 @@ import { ThemeProvider } from "@emotion/react";
 import { CircularProgress, TextField, createTheme } from "@mui/material";
 import React, { useState } from "react";
 import bcrypt from "bcryptjs";
-import { useUserContext } from "../providers";
+import { useUserContext } from "../Providers";
 import { useRouter } from "next/navigation";
 
 const theme = createTheme({

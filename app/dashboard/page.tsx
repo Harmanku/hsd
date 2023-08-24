@@ -1,6 +1,6 @@
 "use client";
 
-import { useUserContext } from "../providers";
+import { useUserContext } from "../Providers";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Box from "@mui/material/Box";

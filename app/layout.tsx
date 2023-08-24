@@ -2,7 +2,7 @@ import RouteGuard from "@/components/RouteGuard";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Providers from "./providers";
+import Providers from "./Providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,7 +36,7 @@ export default function RootLayout({
           sizes="16x16"
           href="images/favicon-16x16.png"
         />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="images/site.webmanifest" />
       </head>
       <body className={inter.className}>
         <RouteGuard />
