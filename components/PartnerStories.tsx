@@ -25,7 +25,7 @@ import CustomCard from "./CustomCard";
 
 const ITEMS_PER_PAGE = 10;
 
-const PartnerStories = ({ userSystem}) => {
+const PartnerStories = ({ userSystem}:any) => {
     
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -38,7 +38,7 @@ const PartnerStories = ({ userSystem}) => {
     startIndex,
     endIndex
   );
-  const handlePageChange = (event, newPage) => {
+  const handlePageChange = (event:any, newPage:any) => {
     setCurrentPage(newPage);
   };
 
@@ -50,7 +50,7 @@ const PartnerStories = ({ userSystem}) => {
             Your Partner's Stories
           </Typography>
           <Stack className="w-full flex justify-center align-middle" spacing={2}>
-            {currentItems.map((item, index) => (
+            {currentItems.map((item:any, index:number) => (
               <CustomCard
 
                 key={item.id}

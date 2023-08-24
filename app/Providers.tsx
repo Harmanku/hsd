@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 
 const userAndSystemContext = createContext({});
 
-function Providers({ children }) {
+function Providers({ children }:any) {
   const [user, setUser] = useState(null);
   const [system, setSystem] = useState(null);
   const [partnerStories, setPartnerStories] = useState(null);

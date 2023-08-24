@@ -233,14 +233,14 @@ function getRandomObject() {
 
 const ITEMS_PER_PAGE = 10;
 
-export default function WritingCorner({ userSystem }) {
+export default function WritingCorner({ userSystem }:any) {
   const [open, setOpen] = React.useState(false);
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
   const [emotion, setEmotion] = useState(getRandomEmotion());
   const [object, setObject] = useState(getRandomObject());
   const [snackOpen, setSnackOpen] = useState(false);
-  const [snackStatus, setSnackStatus] = useState("success");
+  const [snackStatus, setSnackStatus]:any = useState("success");
   const [snackMessage, setSnackMessage] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
@@ -254,7 +254,7 @@ export default function WritingCorner({ userSystem }) {
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const currentItems = userSystem?.user?.Stories?.slice(startIndex, endIndex);
 
-  const handlePageChange = (event, newPage) => {
+  const handlePageChange = (event:any, newPage:any) => {
     setCurrentPage(newPage);
   };
 
@@ -413,7 +413,7 @@ export default function WritingCorner({ userSystem }) {
               Stories You've Written
             </Typography>
             <Stack className="w-full" spacing={2}>
-              {currentItems.map((item, index) => (
+              {currentItems.map((item:any, index:any) => (
                 <CustomCard
                   key={item.id}
                   story={item.story}

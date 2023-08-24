@@ -11,13 +11,13 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-const StoryComponent = ({ stories, userSystem }) => {
+const StoryComponent = ({ stories, userSystem }:any) => {
   const [sliderValue, setSliderValue] = useState(5);
   const [pStories, setPStories] = useState(stories);
   const [isLoading, setIsLoading] = useState(false);
 
   const [snackOpen, setSnackOpen] = useState(false);
-  const [snackStatus, setSnackStatus] = useState("success");
+  const [snackStatus, setSnackStatus]:any = useState("success");
   const [snackMessage, setSnackMessage] = useState("");
 
   const closeSnack = (
@@ -30,7 +30,7 @@ const StoryComponent = ({ stories, userSystem }) => {
 
     setSnackOpen(false);
   };
-  const handleSliderChange = (event, newValue) => {
+  const handleSliderChange = (event:any, newValue:any) => {
     setSliderValue(newValue);
   };
 

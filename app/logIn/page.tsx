@@ -15,20 +15,20 @@ const theme = createTheme({
   },
 });
 
-const getHash = async (password: String) => {
+const getHash = async (password: string) => {
   var salt = bcrypt.genSaltSync(10);
   var hash = bcrypt.hashSync(password, salt);
   return hash;
 };
 
 export default function logIn() {
-  const userSystem = useUserContext();
+  const userSystem: any = useUserContext();
   const router = useRouter();
   const [passwordValue, setPasswordValue] = useState("");
   const [passwordError, setPasswordError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const validateUser = async (password: String) => {
+  const validateUser = async (password: any) => {
     setIsLoading(true);
     const res = await fetch(`http://localhost:3000/api/logIn`, {
       method: "POST",
@@ -38,7 +38,6 @@ export default function logIn() {
     if (result.status === "error") {
       setPasswordError(true);
     } else {
-      console.log(userSystem);
       userSystem.setSystem(result.system);
       userSystem.setUser(result.user);
       userSystem.setPartnerStories(result.partnerStories);
@@ -56,7 +55,10 @@ export default function logIn() {
         <ThemeProvider theme={theme}>
           {isLoading ? (
             <div className="w-[222px] h-[58px] flex justify-center ">
-            <CircularProgress color={"primary"} className="flex mt-6 w-full" />
+              <CircularProgress
+                color={"primary"}
+                className="flex mt-6 w-full"
+              />
             </div>
           ) : (
             <TextField
@@ -75,9 +77,9 @@ export default function logIn() {
                   setPasswordError(false);
                 }
               }}
-              onKeyDown={async (event) => {
+              onKeyDown={(event) => {
                 if (event.key === "Enter") {
-                  validateUser(event.target.value);
+                  validateUser(passwordValue);
                 }
               }}
             />

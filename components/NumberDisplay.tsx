@@ -1,8 +1,8 @@
 import React from "react";
 import { Typography, Paper } from "@mui/material";
 
-const NumberDisplay = ({ title, number, isActive }) => {
-  const containerStyle = {
+const NumberDisplay = ({ title, number, isActive }:any) => {
+  const containerStyle:any = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

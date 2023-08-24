@@ -7,14 +7,14 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-const CustomCard = ({ title, story, score, pending }) => {
+const CustomCard = ({ title, story, score, pending }:any) => {
   const cardStyle = {
     
     
     
   };
 
-  function interpolateColor(value) {
+  function interpolateColor(value:any) {
     // Ensure the input value is within the range of 1 to 10
     const clampedValue = Math.max(1, Math.min(10, value));
 

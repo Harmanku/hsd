@@ -3,17 +3,17 @@ import React from "react";
 import StoryComponent from "./StoryComponent";
 import PartnerStories from "./PartnerStories";
 
-const Judgement = ({ userSystem }) => {
-  const filterPending = (stories) => {
+const Judgement = ({ userSystem }:any) => {
+  const filterPending = (stories:any) => {
     if (!stories) {
       return null;
     }
 
-    let res = stories.map((ele, index) => {
+    let res = stories.map((ele:any, index:any) => {
       ele.bigIndex = index;
       return ele;
     });
-    res = res.filter((ele) => ele.pending);
+    res = res.filter((ele:any) => ele.pending);
     
     return res;
   };

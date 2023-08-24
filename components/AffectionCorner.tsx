@@ -17,34 +17,34 @@ const hugCost = 25;
 const kissCost = 50;
 const handHoldCose = 10;
 
-function playTimelineAndWait(timeline) {
+function playTimelineAndWait(timeline: any) {
   return new Promise((resolve) => {
     timeline.eventCallback("onComplete", () => {
-      resolve();
+      resolve("");
     });
     timeline.play();
   });
 }
 
-const AffectionCorner = ({ userSystem }) => {
+const AffectionCorner = ({ userSystem }: any) => {
   const [snackOpen, setSnackOpen] = useState(false);
-  const [snackStatus, setSnackStatus] = useState("success");
+  const [snackStatus, setSnackStatus]:any = useState("success");
   const [snackMessage, setSnackMessage] = useState("");
   const [handActive, setHandActive] = useState(false);
   const [hugActive, setHugActive] = useState(false);
   const [kissActive, setKissActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const kissRef = useRef();
-  const manRef = useRef();
-  const womanRef = useRef();
-  const handRefLeft = useRef();
-  const handRefRight = useRef();
-  const handHeldRef = useRef();
+  const kissRef:any = useRef();
+  const manRef:any = useRef();
+  const womanRef:any = useRef();
+  const handRefLeft:any = useRef();
+  const handRefRight:any = useRef();
+  const handHeldRef:any = useRef();
 
-  const tLKiss = useRef();
-  const tLHug = useRef();
-  const tLHand = useRef();
+  const tLKiss:any = useRef();
+  const tLHug:any = useRef();
+  const tLHand:any = useRef();
 
   useEffect(() => {
     tLKiss.current = gsap.timeline();
@@ -277,7 +277,7 @@ const AffectionCorner = ({ userSystem }) => {
     });
   };
 
-  const checkIfAffectionCanBeReceived = (id: number, system) => {
+  const checkIfAffectionCanBeReceived = (id: number, system:any) => {
     if (id === 1) {
       if (system.handForH > 0 || system.hugsForH > 0 || system.kissesForH > 0) {
         return true;
@@ -290,7 +290,7 @@ const AffectionCorner = ({ userSystem }) => {
     return false;
   };
 
-  const giveAffection = async (system) => {
+  const giveAffection = async (system:any) => {
     let { hugsForH, kissesForH, handForH, hugsForS, kissesForS, handForS } =
       system;
     if (userSystem.user.id === 1) {
@@ -311,7 +311,7 @@ const AffectionCorner = ({ userSystem }) => {
         await playTimelineAndWait(tLHug.current.restart());
         userSystem.setUser({
           ...userSystem.user,
-          hugsRecieveed: hugsRecieved + 1,
+          hugsRecieved: hugsRecieved + 1,
         });
 
         setHugActive(false);

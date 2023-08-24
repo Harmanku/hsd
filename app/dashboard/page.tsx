@@ -112,7 +112,7 @@ enum dState {
 }
 
 const page = () => {
-  const userSystem = useUserContext();
+  const userSystem: any = useUserContext();
   const theme = useTheme();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -223,9 +223,9 @@ const page = () => {
               onClick={handleDrawerClose}
             >
               {theme.direction === "rtl" ? (
-                <ChevronRightIcon color="#2C3718" />
+                <ChevronRightIcon sx={{ color: "#2C3718" }} />
               ) : (
-                <ChevronLeftIcon color="#2C3718" />
+                <ChevronLeftIcon sx={{ color: "#2C3718" }} />
               )}
             </IconButton>
           </DrawerHeader>

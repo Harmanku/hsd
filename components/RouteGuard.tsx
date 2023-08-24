@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 
 export default function RouteGuard() {
-    const userSystem = useUserContext();
+    const userSystem:any = useUserContext();
   
     const router = useRouter();
     useEffect(() => {
