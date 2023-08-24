@@ -218,7 +218,7 @@ const AffectionCorner = ({ userSystem }: any) => {
       return;
     }
     setIsLoading(true);
-    const res = await fetch(`http://localhost:3000/api/giveA`, {
+    const res = await fetch(`${process.env.ENV_LOCAL_API}/api/giveA`, {
       method: "POST",
       body: JSON.stringify({
         partnerId: userSystem.user.partnerID,
@@ -269,7 +269,7 @@ const AffectionCorner = ({ userSystem }: any) => {
   };
 
   const allAffectionReceived = async () => {
-    const res = await fetch(`http://localhost:3000/api/receiveA`, {
+    const res = await fetch(`${process.env.ENV_LOCAL_API}/api/receiveA`, {
       method: "POST",
       body: JSON.stringify({
         user: userSystem.user.id,
@@ -383,7 +383,7 @@ const AffectionCorner = ({ userSystem }: any) => {
 
   const getUpToDateAffectionNumbers = async () => {
     setIsLoading(true);
-    const res = await fetch(`http://localhost:3000/api/receiveA`, {
+    const res = await fetch(`${process.env.ENV_LOCAL_API}/api/receiveA`, {
       method: "GET",
     });
     const result = await res.json();

@@ -30,7 +30,7 @@ export default function logIn() {
 
   const validateUser = async (password: any) => {
     setIsLoading(true);
-    const res = await fetch(`http://localhost:3000/api/logIn`, {
+    const res = await fetch(`${process.env.ENV_LOCAL_API}/api/logIn`, {
       method: "POST",
       body: JSON.stringify({ password }),
     });

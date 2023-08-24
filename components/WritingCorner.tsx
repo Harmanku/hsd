@@ -279,7 +279,7 @@ export default function WritingCorner({ userSystem }:any) {
   const handleClose = async (shouldSend: boolean) => {
     if (shouldSend) {
       setIsLoading(true);
-      const res = await fetch(`http://localhost:3000/api/submitStory`, {
+      const res = await fetch(`${process.env.ENV_LOCAL_API}/api/submitStory`, {
         method: "PUT",
         body: JSON.stringify({ story, title, userId: userSystem.user.id }),
       });
