@@ -7,6 +7,8 @@ import bcrypt from "bcryptjs";
 import { useUserContext } from "../Providers";
 import { useRouter } from "next/navigation";
 
+
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -30,7 +32,8 @@ export default function logIn() {
 
   const validateUser = async (password: any) => {
     setIsLoading(true);
-    const res = await fetch(`${process.env.ENV_LOCAL_API}/api/logIn`, {
+    
+    const res = await fetch(`/api/logIn`, {
       method: "POST",
       body: JSON.stringify({ password }),
     });

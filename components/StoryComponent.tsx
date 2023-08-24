@@ -37,7 +37,7 @@ const StoryComponent = ({ stories, userSystem }:any) => {
   const handleSubmit = async () => {
     // Perform actions with the collected data
     setIsLoading(true);
-    const res = await fetch(`${process.env.ENV_LOCAL_API}/api/judgeStory`, {
+    const res = await fetch(`/api/judgeStory`, {
       method: "POST",
       body: JSON.stringify({
         partnerID: userSystem.user.partnerID,
