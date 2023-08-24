@@ -1,9 +1,14 @@
-import Image from "next/image";
+'use client'
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+
+  let router = useRouter();
+  router.push('/logIn');
+  
   return (
     <main>
-      <h1 className="float-right bg-daisy">HELLO</h1>
+      
     </main>
   );
 }

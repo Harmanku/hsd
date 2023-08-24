@@ -1,0 +1,55 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+    provider          = "postgresql"
+    url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl         = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+    shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+}
+
+model Story {
+    id       Int      @id @default(autoincrement())
+    //Story
+    title    String
+    story    String
+    //Judged
+    score    Int
+    pending  Boolean
+    //info
+    userID   Int
+    author   User     @relation(fields: [userID], references: [id])
+    dateTime DateTime @default(now()) @db.Timestamptz(6)
+}
+
+model User {
+    //Basics
+    id             Int     @id @default(autoincrement())
+    Name           String
+    partnerID      Int
+    energy         Int
+    password       String  @default("")
+    //Affection
+    hugsRecieved   Int
+    kissesRecieved Int
+    handsHeld      Int
+    //Settings
+    Favorites      Int[]
+    //Stories
+    Stories        Story[]
+}
+
+model System {
+    id         Int      @id @default(autoincrement())
+    handheld   DateTime
+    hRequest   Boolean
+    sRequest   Boolean
+    handForS   Int   @default(0)
+    hugsForS   Int   @default(0)
+    kissesForS Int   @default(0)
+    handForH   Int   @default(0)
+    hugsForH   Int   @default(0)
+    kissesForH Int   @default(0)
+}
