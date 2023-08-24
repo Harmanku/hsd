@@ -7,8 +7,6 @@ import bcrypt from "bcryptjs";
 import { useUserContext } from "../Providers";
 import { useRouter } from "next/navigation";
 
-
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -32,7 +30,7 @@ export default function logIn() {
 
   const validateUser = async (password: any) => {
     setIsLoading(true);
-    
+
     const res = await fetch(`/api/logIn`, {
       method: "POST",
       body: JSON.stringify({ password }),
@@ -64,28 +62,30 @@ export default function logIn() {
               />
             </div>
           ) : (
-            <TextField
-              fullWidth
-              error={passwordError}
-              className="mt-6 mx-4 w-auto"
-              type="password"
-              inputProps={{ style: { color: "#E9E7DA" } }}
-              id="password"
-              label="Password"
-              variant="outlined"
-              color="primary"
-              onChange={(event) => {
-                setPasswordValue(event.target.value);
-                if (passwordError) {
-                  setPasswordError(false);
-                }
-              }}
-              onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  validateUser(passwordValue);
-                }
-              }}
-            />
+            <span className="mt-6 mx-4 w-auto">
+              <TextField
+                fullWidth
+                error={passwordError}
+                
+                type="password"
+                inputProps={{ style: { color: "#E9E7DA" } }}
+                id="password"
+                label="Password"
+                variant="outlined"
+                color="primary"
+                onChange={(event) => {
+                  setPasswordValue(event.target.value);
+                  if (passwordError) {
+                    setPasswordError(false);
+                  }
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter") {
+                    validateUser(passwordValue);
+                  }
+                }}
+              />
+            </span>
           )}
         </ThemeProvider>
       </div>
