@@ -57,7 +57,7 @@ const CustomCard = ({ title, story, score, pending }:any) => {
   };
 
   return (
-    <Card className="" style={cardStyle} variant="outlined">
+    <Card  style={cardStyle} variant="outlined">
       <CardContent sx={{ backgroundColor: "#373f27" }}>
         <Typography color="#cda34f" style={titleStyle}>
           {title}

@@ -223,9 +223,9 @@ const page = () => {
               onClick={handleDrawerClose}
             >
               {theme.direction === "rtl" ? (
-                <ChevronRightIcon sx={{ color: "#2C3718" }} />
+                <ChevronRightIcon sx={{ color: "#fff7e8" }} />
               ) : (
-                <ChevronLeftIcon sx={{ color: "#2C3718" }} />
+                <ChevronLeftIcon sx={{ color: "#fff7e8" }} />
               )}
             </IconButton>
           </DrawerHeader>
@@ -251,7 +251,7 @@ const page = () => {
                   ) : (
                     <div className="flex justify-center">
                       <BoltIcon sx={{ color: "skyblue" }} />
-                      <Typography color="skyblue" className="mr-2 text-center">
+                      <Typography color="skyblue"  style={{textAlign: 'center', marginRight: '.5rem'}}>
                         {getUserSystemEnergy()}
                       </Typography>
                     </div>

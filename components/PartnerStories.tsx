@@ -46,10 +46,10 @@ const PartnerStories = ({ userSystem}:any) => {
     <div>
       {userSystem?.partnerStories ? (
         <div className="flex justify-center flex-col items-center w-full">
-          <Typography className="my-8" sx={{ color: "#2C3718" }} variant="h4">
+          <Typography  sx={{ color: "#2C3718", marginTop: '2rem', marginBottom: '2rem' }} variant="h4">
             Your Partner's Stories
           </Typography>
-          <Stack className="w-full flex justify-center align-middle" spacing={2}>
+          <Stack style={{width:'733px', display: "flex",  justifyContent: 'center', verticalAlign: 'middle' }}   spacing={2}>
             {currentItems.map((item:any, index:number) => (
               <CustomCard
 

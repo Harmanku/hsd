@@ -1,4 +1,6 @@
 import React, { useState, useLayoutEffect, useRef, useEffect } from "react";
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import RealisticButton from "./RealisticButton";
 import {
   Box,
@@ -28,23 +30,26 @@ function playTimelineAndWait(timeline: any) {
 
 const AffectionCorner = ({ userSystem }: any) => {
   const [snackOpen, setSnackOpen] = useState(false);
-  const [snackStatus, setSnackStatus]:any = useState("success");
+  const [snackStatus, setSnackStatus]: any = useState("success");
   const [snackMessage, setSnackMessage] = useState("");
   const [handActive, setHandActive] = useState(false);
   const [hugActive, setHugActive] = useState(false);
   const [kissActive, setKissActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const kissRef:any = useRef();
-  const manRef:any = useRef();
-  const womanRef:any = useRef();
-  const handRefLeft:any = useRef();
-  const handRefRight:any = useRef();
-  const handHeldRef:any = useRef();
 
-  const tLKiss:any = useRef();
-  const tLHug:any = useRef();
-  const tLHand:any = useRef();
+  const matchesMD = useMediaQuery('(min-width:720px)');
+
+  const kissRef: any = useRef();
+  const manRef: any = useRef();
+  const womanRef: any = useRef();
+  const handRefLeft: any = useRef();
+  const handRefRight: any = useRef();
+  const handHeldRef: any = useRef();
+
+  const tLKiss: any = useRef();
+  const tLHug: any = useRef();
+  const tLHand: any = useRef();
 
   useEffect(() => {
     tLKiss.current = gsap.timeline();
@@ -277,7 +282,7 @@ const AffectionCorner = ({ userSystem }: any) => {
     });
   };
 
-  const checkIfAffectionCanBeReceived = (id: number, system:any) => {
+  const checkIfAffectionCanBeReceived = (id: number, system: any) => {
     if (id === 1) {
       if (system.handForH > 0 || system.hugsForH > 0 || system.kissesForH > 0) {
         return true;
@@ -290,7 +295,7 @@ const AffectionCorner = ({ userSystem }: any) => {
     return false;
   };
 
-  const giveAffection = async (system:any) => {
+  const giveAffection = async (system: any) => {
     let { hugsForH, kissesForH, handForH, hugsForS, kissesForS, handForS } =
       system;
     if (userSystem.user.id === 1) {
@@ -346,7 +351,6 @@ const AffectionCorner = ({ userSystem }: any) => {
         handForS -= 1;
       }
       while (hugsForS > 0) {
-        
         setHugActive(true);
         await playTimelineAndWait(tLHug.current.restart());
         userSystem.setUser({
@@ -361,7 +365,6 @@ const AffectionCorner = ({ userSystem }: any) => {
         hugsForS -= 1;
       }
       while (kissesForS > 0) {
-        
         setKissActive(true);
 
         await playTimelineAndWait(tLKiss.current.restart());
@@ -408,23 +411,71 @@ const AffectionCorner = ({ userSystem }: any) => {
   };
 
   return (
-    <Container className="flex justify-center flex-col items-center h-full">
-      <Typography className="absolute z-10 opacity-0 hidden" ref={kissRef}>
+    <Container  style={{display:'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100%'}}>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={kissRef}
+      >
         💋
       </Typography>
-      <Typography className="absolute z-10 opacity-0 hidden" ref={handRefRight}>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={handRefRight}
+      >
         ✋
       </Typography>
-      <Typography className="absolute z-10 opacity-0 hidden" ref={handRefLeft}>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={handRefLeft}
+      >
         🤚
       </Typography>
-      <Typography className="absolute z-10 opacity-0 hidden" ref={handHeldRef}>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={handHeldRef}
+      >
         🤝
       </Typography>
-      <Typography className="absolute z-10 opacity-0 hidden" ref={manRef}>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={manRef}
+      >
         🕺
       </Typography>
-      <Typography className="absolute z-10 opacity-0 hidden" ref={womanRef}>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={womanRef}
+      >
         💃
       </Typography>
 
@@ -442,7 +493,7 @@ const AffectionCorner = ({ userSystem }: any) => {
           {snackMessage}
         </Alert>
       </Snackbar>
-      <Container className="flex justify-evenly p-4 m-4 flex-col md:flex-row">
+      <Container  style={{display: 'flex', justifyContent: 'space-evenly',  padding: '1rem', margin: '1rem', flexDirection: !matchesMD  ? 'column' : 'row' }} >
         <NumberDisplay
           isActive={handActive}
           title="🤝"

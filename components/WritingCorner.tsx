@@ -233,14 +233,14 @@ function getRandomObject() {
 
 const ITEMS_PER_PAGE = 10;
 
-export default function WritingCorner({ userSystem }:any) {
+export default function WritingCorner({ userSystem }: any) {
   const [open, setOpen] = React.useState(false);
   const [title, setTitle] = useState("");
   const [story, setStory] = useState("");
   const [emotion, setEmotion] = useState(getRandomEmotion());
   const [object, setObject] = useState(getRandomObject());
   const [snackOpen, setSnackOpen] = useState(false);
-  const [snackStatus, setSnackStatus]:any = useState("success");
+  const [snackStatus, setSnackStatus]: any = useState("success");
   const [snackMessage, setSnackMessage] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
@@ -254,7 +254,7 @@ export default function WritingCorner({ userSystem }:any) {
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const currentItems = userSystem?.user?.Stories?.slice(startIndex, endIndex);
 
-  const handlePageChange = (event:any, newPage:any) => {
+  const handlePageChange = (event: any, newPage: any) => {
     setCurrentPage(newPage);
   };
 
@@ -394,12 +394,16 @@ export default function WritingCorner({ userSystem }:any) {
       <div className="flex flex-col">
         <div className="w-100 flex">
           <div className="flex items-center justify-end p-6 bg-Greenery w-fit rounded-lg shadow-md ml-3.5">
-            <Typography className="text-xl" color="#E9E7DA">
+            <Typography
+              style={{ fontSize: "1.25rem", lineHeight: "1.75rem" }}
+              color="#E9E7DA"
+            >
               Write a Story
             </Typography>
             <Fab
               size="large"
-              className="ml-3 bg-gold"
+              
+              style={{marginLeft:'.75rem', backgroundColor: 'rgb(205 163 79)'}}
               onClick={handleClickOpen}
             >
               <EditNoteIcon />
@@ -409,11 +413,14 @@ export default function WritingCorner({ userSystem }:any) {
 
         {userSystem?.user?.Stories ? (
           <div className="flex justify-center flex-col items-center w-full">
-            <Typography className="my-8" sx={{ color: "#2C3718" }} variant="h4">
+            <Typography
+              sx={{ color: "#2C3718", marginTop: "2rem", marginBottom: "2rem" }}
+              variant="h4"
+            >
               Stories You've Written
             </Typography>
-            <Stack className="w-full" spacing={2}>
-              {currentItems.map((item:any, index:any) => (
+            <Stack style={{ width: "100%", maxWidth: "730px" }} spacing={2}>
+              {currentItems.map((item: any, index: any) => (
                 <CustomCard
                   key={item.id}
                   story={item.story}

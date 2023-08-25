@@ -68,8 +68,8 @@ const StoryComponent = ({ stories, userSystem }:any) => {
 
   if (!pStories || pStories.length == 0) {
     return (
-      <Container className="bg-Greenery rounded-xl p-4">
-        <Container className="bg-gold p-6 rounded-xl text-center" style={{}}>
+      <Container  style={{borderRadius: '.75rem', padding: '1rem', backgroundColor: 'rgb(55 63 39)' }}>
+        <Container style={{textAlign: 'center', borderRadius: '.75rem',padding: '1.5rem', backgroundColor: 'rgb(205 163 79)'  }}>
           <Typography color="black">There are no Stories to judge</Typography>
         </Container>
       </Container>
@@ -92,7 +92,7 @@ const StoryComponent = ({ stories, userSystem }:any) => {
           {snackMessage}
         </Alert>
       </Snackbar>
-      <Container className="bg-gold p-6 rounded-xl" style={{}}>
+      <Container  style={{padding: '1.5rem',borderRadius:'1.5rem', backgroundColor: 'rgb(205 163 79)'}}>
         <Typography color="black" variant="h4" style={{ marginBottom: "1rem" }}>
           <Badge badgeContent={pStories.length} color="info">
             Give Judgment

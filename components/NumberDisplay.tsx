@@ -28,7 +28,7 @@ const NumberDisplay = ({ title, number, isActive }:any) => {
   };
 
   return (
-    <Paper
+    <div
       className={`transition  ease-in duration-100 ${
         isActive ? "bg-gold" : "bg-[#e9e7de]"
       }`}
@@ -41,7 +41,7 @@ const NumberDisplay = ({ title, number, isActive }:any) => {
       <Typography variant="body1" style={numberStyle}>
         {number}
       </Typography>
-    </Paper>
+    </div>
   );
 };
 
