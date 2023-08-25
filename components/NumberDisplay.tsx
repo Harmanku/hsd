@@ -32,7 +32,7 @@ const NumberDisplay = ({ title, number, isActive }:any) => {
       className={`transition  ease-in duration-100 ${
         isActive ? "bg-gold" : "bg-[#e9e7de]"
       }`}
-      elevation={3}
+      
       style={containerStyle}
     >
       <Typography color="#373f27" variant="h6" style={titleStyle}>

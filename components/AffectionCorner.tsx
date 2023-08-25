@@ -514,6 +514,7 @@ const AffectionCorner = ({ userSystem }: any) => {
       <Button
         variant="outlined"
         disabled={isLoading}
+        style={{display: 'flex', marginTop: '.75rem'}}
         className="flex mt-3 p-4 border-gold text-Greenery"
         onClick={() => {
           getUpToDateAffectionNumbers();
