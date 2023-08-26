@@ -417,7 +417,7 @@ export default function WritingCorner({ userSystem }: any) {
               sx={{ color: "#2C3718", marginTop: "2rem", marginBottom: "2rem" }}
               variant="h4"
             >
-              Stories You've Written
+              Notes you've written
             </Typography>
             <Stack style={{ width: "100%", maxWidth: "730px" }} spacing={2}>
               {currentItems.map((item: any, index: any) => (

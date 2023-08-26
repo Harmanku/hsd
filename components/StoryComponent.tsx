@@ -11,13 +11,13 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-const StoryComponent = ({ stories, userSystem }:any) => {
+const StoryComponent = ({ stories, userSystem }: any) => {
   const [sliderValue, setSliderValue] = useState(5);
   const [pStories, setPStories] = useState(stories);
   const [isLoading, setIsLoading] = useState(false);
 
   const [snackOpen, setSnackOpen] = useState(false);
-  const [snackStatus, setSnackStatus]:any = useState("success");
+  const [snackStatus, setSnackStatus]: any = useState("success");
   const [snackMessage, setSnackMessage] = useState("");
 
   const closeSnack = (
@@ -30,7 +30,7 @@ const StoryComponent = ({ stories, userSystem }:any) => {
 
     setSnackOpen(false);
   };
-  const handleSliderChange = (event:any, newValue:any) => {
+  const handleSliderChange = (event: any, newValue: any) => {
     setSliderValue(newValue);
   };
 
@@ -68,8 +68,21 @@ const StoryComponent = ({ stories, userSystem }:any) => {
 
   if (!pStories || pStories.length == 0) {
     return (
-      <Container  style={{borderRadius: '.75rem', padding: '1rem', backgroundColor: 'rgb(55 63 39)' }}>
-        <Container style={{textAlign: 'center', borderRadius: '.75rem',padding: '1.5rem', backgroundColor: 'rgb(205 163 79)'  }}>
+      <Container
+        style={{
+          borderRadius: ".75rem",
+          padding: "1rem",
+          backgroundColor: "rgb(55 63 39)",
+        }}
+      >
+        <Container
+          style={{
+            textAlign: "center",
+            borderRadius: ".75rem",
+            padding: "1.5rem",
+            backgroundColor: "rgb(205 163 79)",
+          }}
+        >
           <Typography color="black">There are no Stories to judge</Typography>
         </Container>
       </Container>
@@ -92,7 +105,13 @@ const StoryComponent = ({ stories, userSystem }:any) => {
           {snackMessage}
         </Alert>
       </Snackbar>
-      <Container  style={{padding: '1.5rem',borderRadius:'1.5rem', backgroundColor: 'rgb(205 163 79)'}}>
+      <Container
+        style={{
+          padding: "1.5rem",
+          borderRadius: "1.5rem",
+          backgroundColor: "rgb(205 163 79)",
+        }}
+      >
         <Typography color="black" variant="h4" style={{ marginBottom: "1rem" }}>
           <Badge badgeContent={pStories.length} color="info">
             Give Judgment
@@ -145,9 +164,16 @@ const StoryComponent = ({ stories, userSystem }:any) => {
             <CircularProgress sx={{ color: "#373f27" }} />
           ) : (
             <Button
-              variant="contained"
-              className="bg-Greenery hover:bg-daisy hover:text-Greenery"
-              sx={{ color: "gold", borderColor: "red" }}
+              variant="contained"              
+              sx={{
+                color: "gold",
+                borderColor: "red",
+                backgroundColor: "rgb(55 63 39)",
+                "&:hover": { backgroundColor: 'rgb(233 231 218)',
+                color:  "rgb(55 63 39)"
+              },
+
+              }}
               onClick={handleSubmit}
             >
               Submit

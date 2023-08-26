@@ -47,7 +47,7 @@ const PartnerStories = ({ userSystem}:any) => {
       {userSystem?.partnerStories ? (
         <div className="flex justify-center flex-col items-center w-full">
           <Typography  sx={{ color: "#2C3718", marginTop: '2rem', marginBottom: '2rem' }} variant="h4">
-            Your Partner's Stories
+            Your partner's notes
           </Typography>
           <Stack style={{width:'733px', display: "flex",  justifyContent: 'center', verticalAlign: 'middle' }}   spacing={2}>
             {currentItems.map((item:any, index:number) => (

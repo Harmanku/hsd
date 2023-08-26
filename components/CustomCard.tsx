@@ -8,38 +8,41 @@ import {
 } from "@mui/material";
 
 const CustomCard = ({ title, story, score, pending }:any) => {
-  const cardStyle = {
-    
-    
-    
-  };
-
+  
   function interpolateColor(value:any) {
     // Ensure the input value is within the range of 1 to 10
     const clampedValue = Math.max(1, Math.min(10, value));
-
+    
     // Calculate the ratio between the input value and the range [1, 10]
     const ratio = (clampedValue - 1) / 9;
-
+    
     // Interpolate between bright red (#FF0000) and bright green (#00FF00)
     const red = Math.round(255 - ratio * 255);
     const green = Math.round(ratio * 255);
     const blue = 0;
-
+    
     // Construct the CSS color using RGB values
     const color = `rgb(${red}, ${green}, ${blue})`;
-
+    
     return color;
   }
+  const cardStyle = {   
+      
+  };
 
   const titleStyle = {
-    fontSize: 20,
+    fontSize: 25,
+    marginTop: '.3rem',
     fontWeight: "bold",
-    marginBottom: "8px",
+    marginBottom: "1rem",
+    marginLeft: '2px',
+    marginRight: '2px'
   };
 
   const storyStyle = {
     marginBottom: "16px",
+    marginRight: "2px",
+    marginLeft: '2px',
   };
 
   const scoreStyle = {
