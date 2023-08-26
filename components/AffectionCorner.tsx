@@ -400,9 +400,7 @@ const AffectionCorner = ({ userSystem }: any) => {
   };
 
   const getUpToDateAffectionNumbers = async () => {
-    tLHand.current.restart();
-    tLHug.current.restart();
-    tLKiss.current.restart();
+    
     setIsLoading(true);
     const res = await fetch(`/api/receiveA`, {
       method: "GET",
