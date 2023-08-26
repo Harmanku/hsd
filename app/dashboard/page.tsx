@@ -161,7 +161,11 @@ const page = () => {
         );
 
       case dState.AffectionCorner:
-        return <AffectionCorner userSystem={userSystem} />;
+        return (
+          <>
+            <AffectionCorner userSystem={userSystem} />
+          </>
+        );
       case dState.Settings:
         return <Settings />;
       default:
@@ -251,7 +255,10 @@ const page = () => {
                   ) : (
                     <div className="flex justify-center">
                       <BoltIcon sx={{ color: "skyblue" }} />
-                      <Typography color="skyblue"  style={{textAlign: 'center', marginRight: '.5rem'}}>
+                      <Typography
+                        color="skyblue"
+                        style={{ textAlign: "center", marginRight: ".5rem" }}
+                      >
                         {getUserSystemEnergy()}
                       </Typography>
                     </div>
@@ -455,7 +462,7 @@ const page = () => {
           }}
         >
           <DrawerHeader />
-          <Box className="">{renderSelectedState(dashBoardState)}</Box>
+          <Box >{renderSelectedState(dashBoardState)}</Box>
         </Box>
       </Box>
     </main>

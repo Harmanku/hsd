@@ -113,7 +113,7 @@ const AffectionCorner = ({ userSystem }: any) => {
           scale: 10,
           rotate: 120,
         },
-        { duration: 1, x: 0, opacity: 1, y: 0, scale: 16 },
+        { duration: 1, x: 0, opacity: 1, y: 0, scale: 16, display: "none" },
         0
       )
       .fromTo(
@@ -429,76 +429,77 @@ const AffectionCorner = ({ userSystem }: any) => {
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
-        height: "100%",
+        height: '100%'
       }}
     >
-      <Typography
-        style={{
-          position: "absolute",
-          zIndex: 10,
-          opacity: 0,
-          display: "none",
-        }}
-        ref={kissRef}
-      >
-        💋
-      </Typography>
-      <Typography
-        style={{
-          position: "absolute",
-          zIndex: 10,
-          opacity: 0,
-          display: "none",
-        }}
-        ref={handRefRight}
-      >
-        ✋
-      </Typography>
-      <Typography
-        style={{
-          position: "absolute",
-          zIndex: 10,
-          opacity: 0,
-          display: "none",
-        }}
-        ref={handRefLeft}
-      >
-        🤚
-      </Typography>
-      <Typography
-        style={{
-          position: "absolute",
-          zIndex: 10,
-          opacity: 0,
-          display: "none",
-        }}
-        ref={handHeldRef}
-      >
-        🤝
-      </Typography>
-      <Typography
-        style={{
-          position: "absolute",
-          zIndex: 10,
-          opacity: 0,
-          display: "none",
-        }}
-        ref={manRef}
-      >
-        🕺
-      </Typography>
-      <Typography
-        style={{
-          position: "absolute",
-          zIndex: 10,
-          opacity: 0,
-          display: "none",
-        }}
-        ref={womanRef}
-      >
-        💃
-      </Typography>
-
+      <div className='overflow-hidden h-full w-full relative m-0 p-0'>
+        <Typography
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            opacity: 0,
+            display: "none",
+          }}
+          ref={kissRef}
+        >
+          💋
+        </Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            opacity: 0,
+            display: "none",
+          }}
+          ref={handRefRight}
+        >
+          ✋
+        </Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            opacity: 0,
+            display: "none",
+          }}
+          ref={handRefLeft}
+        >
+          🤚
+        </Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            opacity: 0,
+            display: "none",
+          }}
+          ref={handHeldRef}
+        >
+          🤝
+        </Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            opacity: 0,
+            display: "none",
+          }}
+          ref={manRef}
+        >
+          🕺
+        </Typography>
+        <Typography
+          style={{
+            position: "absolute",
+            zIndex: 10,
+            opacity: 0,
+            display: "none",
+          }}
+          ref={womanRef}
+        >
+          💃
+        </Typography>
+      </div>
       <Snackbar
         open={snackOpen}
         autoHideDuration={6000}
@@ -517,8 +518,8 @@ const AffectionCorner = ({ userSystem }: any) => {
         style={{
           display: "flex",
           justifyContent: "space-evenly",
-          padding: "1rem",
-          margin: "1rem",
+          padding: ".5rem",
+          margin: ".5rem",
           flexDirection: !matchesMD ? "column" : "row",
         }}
       >
@@ -580,9 +581,9 @@ const AffectionCorner = ({ userSystem }: any) => {
         </Typography>
       </div>
       <div className="flex justify-evenly p-4 m-4 flex-col md:flex-row w-9/12">
-        <div className="flex justify-evenly flex-col align-middle text-center">
-          <ThemeProvider theme={theme}>
-            <span className="bg-gold m-4">
+        <ThemeProvider theme={theme}>
+          <div className="flex justify-evenly flex-col align-middle text-center">
+            <span className="bg-gold m-4 rounded-sm">
               <Button
                 disabled={isLoading}
                 variant="contained"
@@ -602,59 +603,61 @@ const AffectionCorner = ({ userSystem }: any) => {
                 <Typography variant="h5"> Hold 👫</Typography>
               </Button>
             </span>
-          </ThemeProvider>
 
-          <Typography className="text-Greenery" variant="body1">
-            Cost: 10
-          </Typography>
-        </div>
-        <div className="flex justify-center flex-col align-middle text-center">
-          <span className="bg-gold m-4">
-            <Button
-              disabled={isLoading}
-              variant="contained"
-              sx={{
-                display: "flex",
-                width: "100%",
-                padding: "1rem",
-                color: "rgb(233 231 218)",
-                "&:hover": { backgroundColor: "rgb(55 63 39)" },
-              }}
-              onClick={() => {
-                handleGiveAffection("Hug");
-              }}
-            >
-              <Typography variant="h5"> Give 🤗</Typography>
-            </Button>
-          </span>
+            <Typography className="text-Greenery" variant="body1">
+              Cost: 10
+            </Typography>
+          </div>
+          <div className="flex justify-center flex-col align-middle text-center">
+            <span className="bg-gold m-4 rounded-sm">
+              <Button
+                disabled={isLoading}
+                variant="contained"
+                color="primary"
+                sx={{
+                  display: "flex",
+                  width: "100%",
+                  padding: "1rem",
+                  color: "rgb(233 231 218)",
+                  "&:hover": { backgroundColor: "rgb(55 63 39)" },
+                }}
+                onClick={() => {
+                  handleGiveAffection("Hug");
+                }}
+              >
+                <Typography variant="h5"> Give 🤗</Typography>
+              </Button>
+            </span>
 
-          <Typography className="text-Greenery" variant="body1">
-            Cost: 20
-          </Typography>
-        </div>
-        <div className="flex justify-center flex-col align-middle text-center">
-          <span className="bg-gold m-4">
-            <Button
-              disabled={isLoading}
-              variant="contained"
-              sx={{
-                display: "flex",
-                padding: "1rem",
-                width: "100%",
-                color: "rgb(233 231 218)",
-                "&:hover": { backgroundColor: "rgb(55 63 39)" },
-              }}
-              onClick={() => {
-                handleGiveAffection("Kiss");
-              }}
-            >
-              <Typography variant="h5"> Give 😘</Typography>
-            </Button>
-          </span>
-          <Typography className="text-Greenery" variant="body1">
-            Cost: 40
-          </Typography>
-        </div>
+            <Typography className="text-Greenery" variant="body1">
+              Cost: 20
+            </Typography>
+          </div>
+          <div className="flex justify-center flex-col align-middle text-center">
+            <span className="bg-gold m-4 rounded-sm">
+              <Button
+                disabled={isLoading}
+                color="primary"
+                variant="contained"
+                sx={{
+                  display: "flex",
+                  padding: "1rem",
+                  width: "100%",
+                  color: "rgb(233 231 218)",
+                  "&:hover": { backgroundColor: "rgb(55 63 39)" },
+                }}
+                onClick={() => {
+                  handleGiveAffection("Kiss");
+                }}
+              >
+                <Typography variant="h5"> Give 😘</Typography>
+              </Button>
+            </span>
+            <Typography className="text-Greenery" variant="body1">
+              Cost: 40
+            </Typography>
+          </div>
+        </ThemeProvider>
       </div>
       {isLoading ? <LinearProgress color="inherit" className="w-full" /> : null}
     </Container>
