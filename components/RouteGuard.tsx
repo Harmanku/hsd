@@ -14,7 +14,7 @@ export default function RouteGuard() {
     
     
     if (!userSystem?.user || !userSystem?.system) {        
-        //router.push('/logIn');        
+        router.push('/logIn');        
     }
 
     return () => {      
