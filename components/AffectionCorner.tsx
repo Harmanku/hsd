@@ -68,8 +68,8 @@ const AffectionCorner = ({ userSystem }: any) => {
     tLKiss.current
       .fromTo(
         kissRef.current,
-        { display: "block", duration: 6, opacity: 0, rotate: 0, scale: 0.5 },
-        { opacity: 1, rotate: 420, ease: "back.out(3)", scale: 40 }
+        { display: "none", duration: 6, opacity: 0, rotate: 0, scale: 0.5 },
+        { opacity: 1, rotate: 420, ease: "back.out(3)", scale: 40, display: 'block'}
       )
       .to(kissRef.current, {
         duration: 1,
@@ -92,7 +92,7 @@ const AffectionCorner = ({ userSystem }: any) => {
       .fromTo(
         handRefRight.current,
         {
-          display: "block",
+          display: "none",
           x: 1200,
           y: -400,
           ease: "back.out(3)",
@@ -100,12 +100,12 @@ const AffectionCorner = ({ userSystem }: any) => {
           rotate: -120,
           opacity: 0,
         },
-        { duration: 1, x: 0, opacity: 1, y: 0, scale: 16 }
+        { duration: 1, x: 0, opacity: 1, y: 0, scale: 16 , display: 'block'}
       )
       .fromTo(
         handRefLeft.current,
         {
-          display: "block",
+          display: "none",
           opacity: 0,
           x: -1200,
           y: -400,
@@ -113,13 +113,13 @@ const AffectionCorner = ({ userSystem }: any) => {
           scale: 10,
           rotate: 120,
         },
-        { duration: 1, x: 0, opacity: 1, y: 0, scale: 16, display: "none" },
+        { duration: 1, x: 0, opacity: 1, y: 0, scale: 16, display: "block" },
         0
       )
       .fromTo(
         handHeldRef.current,
-        { display: "block", scale: 0, opacity: 0, rotate: 20 },
-        { ease: "bounce", rotate: 0, scale: 30, opacity: 1 },
+        { display: "none", scale: 0, opacity: 0, rotate: 20 },
+        { ease: "bounce", rotate: 0, scale: 30, opacity: 1, display: 'block' },
         0.8
       )
       .to(handRefRight.current, { opacity: 0, display: "none" }, 1.1)
@@ -131,13 +131,14 @@ const AffectionCorner = ({ userSystem }: any) => {
       .fromTo(
         manRef.current,
         {
-          display: "block",
+          display: "none",
           scale: 1,
           x: 1000,
           rotateY: 180,
           opacity: 0,
         },
         {
+          display: 'block',
           opacity: 1,
           duration: 2,
           scale: 30,
@@ -148,13 +149,15 @@ const AffectionCorner = ({ userSystem }: any) => {
       .fromTo(
         womanRef.current,
         {
+          display: 'none',
           opacity: 0,
-          display: "block",
+          
           scale: 50,
           y: 40,
           x: -1000,
         },
         {
+          display: 'block',
           opacity: 1,
           ease: "power2",
           duration: 1.8,
@@ -397,6 +400,9 @@ const AffectionCorner = ({ userSystem }: any) => {
   };
 
   const getUpToDateAffectionNumbers = async () => {
+    tLHand.current.restart();
+    tLHug.current.restart();
+    tLKiss.current.restart();
     setIsLoading(true);
     const res = await fetch(`/api/receiveA`, {
       method: "GET",
@@ -429,77 +435,76 @@ const AffectionCorner = ({ userSystem }: any) => {
         justifyContent: "center",
         flexDirection: "column",
         alignItems: "center",
-        height: '100%'
+        height: "100%",
       }}
     >
-      <div className='overflow-hidden h-full w-full relative m-0 p-0'>
-        <Typography
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            opacity: 0,
-            display: "none",
-          }}
-          ref={kissRef}
-        >
-          💋
-        </Typography>
-        <Typography
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            opacity: 0,
-            display: "none",
-          }}
-          ref={handRefRight}
-        >
-          ✋
-        </Typography>
-        <Typography
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            opacity: 0,
-            display: "none",
-          }}
-          ref={handRefLeft}
-        >
-          🤚
-        </Typography>
-        <Typography
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            opacity: 0,
-            display: "none",
-          }}
-          ref={handHeldRef}
-        >
-          🤝
-        </Typography>
-        <Typography
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            opacity: 0,
-            display: "none",
-          }}
-          ref={manRef}
-        >
-          🕺
-        </Typography>
-        <Typography
-          style={{
-            position: "absolute",
-            zIndex: 10,
-            opacity: 0,
-            display: "none",
-          }}
-          ref={womanRef}
-        >
-          💃
-        </Typography>
-      </div>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={kissRef}
+      >
+        💋
+      </Typography>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={handRefRight}
+      >
+        ✋
+      </Typography>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={handRefLeft}
+      >
+        🤚
+      </Typography>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={handHeldRef}
+      >
+        🤝
+      </Typography>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={manRef}
+      >
+        🕺
+      </Typography>
+      <Typography
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          opacity: 0,
+          display: "none",
+        }}
+        ref={womanRef}
+      >
+        💃
+      </Typography>
+
       <Snackbar
         open={snackOpen}
         autoHideDuration={6000}
