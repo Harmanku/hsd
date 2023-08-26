@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect, useRef, useEffect } from "react";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import RealisticButton from "./RealisticButton";
 import {
@@ -10,14 +10,27 @@ import {
   Snackbar,
   Alert,
   LinearProgress,
+  createTheme,
 } from "@mui/material";
 import BoltIcon from "@mui/icons-material/Bolt";
 import NumberDisplay from "./NumberDisplay";
 import { gsap } from "gsap";
+import { ThemeProvider } from "@emotion/react";
 
 const hugCost = 25;
 const kissCost = 50;
 const handHoldCose = 10;
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#CDA34F", //your color
+    },
+    secondary: {
+      main: "#373f27",
+    },
+  },
+});
 
 function playTimelineAndWait(timeline: any) {
   return new Promise((resolve) => {
@@ -37,8 +50,7 @@ const AffectionCorner = ({ userSystem }: any) => {
   const [kissActive, setKissActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-
-  const matchesMD = useMediaQuery('(min-width:720px)');
+  const matchesMD = useMediaQuery("(min-width:720px)");
 
   const kissRef: any = useRef();
   const manRef: any = useRef();
@@ -411,7 +423,15 @@ const AffectionCorner = ({ userSystem }: any) => {
   };
 
   return (
-    <Container  style={{display:'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', height: '100%'}}>
+    <Container
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+        height: "100%",
+      }}
+    >
       <Typography
         style={{
           position: "absolute",
@@ -493,7 +513,15 @@ const AffectionCorner = ({ userSystem }: any) => {
           {snackMessage}
         </Alert>
       </Snackbar>
-      <Container  style={{display: 'flex', justifyContent: 'space-evenly',  padding: '1rem', margin: '1rem', flexDirection: !matchesMD  ? 'column' : 'row' }} >
+      <Container
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          padding: "1rem",
+          margin: "1rem",
+          flexDirection: !matchesMD ? "column" : "row",
+        }}
+      >
         <NumberDisplay
           isActive={handActive}
           title="🤝"
@@ -514,18 +542,26 @@ const AffectionCorner = ({ userSystem }: any) => {
       <Button
         variant="outlined"
         disabled={isLoading}
-        style={{display: 'flex', marginTop: '.75rem'}}
-        className="flex mt-3 p-4 border-gold text-Greenery"
+        style={{
+          display: "flex",
+          marginTop: ".75rem",
+          padding: "1rem",
+          borderColor: "rgb(205 163 79)",
+          color: "rgb(55 63 39)",
+        }}
         onClick={() => {
           getUpToDateAffectionNumbers();
         }}
       >
         <Typography variant="h5"> Receive Affection</Typography>
       </Button>
-      <Typography className="mt-16 text-Greenery " variant="h4">
+      <Typography
+        style={{ marginTop: "4rem", color: "rgb(55 63 39)" }}
+        variant="h4"
+      >
         Give Affection
       </Typography>
-      <Box className="flex align-items justify-center mt-8 relative">
+      <div className="flex align-items justify-center mt-8 relative">
         <BoltIcon
           sx={{
             right: 30,
@@ -538,64 +574,88 @@ const AffectionCorner = ({ userSystem }: any) => {
         <Typography
           variant="h2"
           color="skyblue"
-          className="flex justify-center "
+          style={{ display: "flex", justifyContent: "center" }}
         >
           {getUserSystemEnergy()}
         </Typography>
-      </Box>
+      </div>
+      <div className="flex justify-evenly p-4 m-4 flex-col md:flex-row w-9/12">
+        <div className="flex justify-evenly flex-col align-middle text-center">
+          <ThemeProvider theme={theme}>
+            <span className="bg-gold m-4">
+              <Button
+                disabled={isLoading}
+                variant="contained"
+                color="primary"
+                sx={{
+                  display: "flex",
+                  padding: "1rem",
+                  width: "100%",
+                  color: "rgb(233 231 218)",
+                  "&:hover": { backgroundColor: "rgb(55 63 39)" },
+                }}
+                size="large"
+                onClick={() => {
+                  handleGiveAffection("Hand");
+                }}
+              >
+                <Typography variant="h5"> Hold 👫</Typography>
+              </Button>
+            </span>
+          </ThemeProvider>
 
-      <Container className="flex justify-evenly p-4 m-4 flex-col md:flex-row ">
-        <div className="flex justify-center flex-col align-middle text-center">
-          <Button
-            disabled={isLoading}
-            variant="contained"
-            className="bg-gold hover:bg-Greenery p-4 m-2 text-daisy"
-            sx={{ display: "flex" }}
-            size="large"
-            onClick={() => {
-              handleGiveAffection("Hand");
-            }}
-          >
-            <Typography variant="h5"> Hold 👫</Typography>
-          </Button>
           <Typography className="text-Greenery" variant="body1">
             Cost: 10
           </Typography>
         </div>
         <div className="flex justify-center flex-col align-middle text-center">
-          <Button
-            disabled={isLoading}
-            variant="contained"
-            className="bg-gold hover:bg-Greenery p-4 m-2 text-daisy"
-            sx={{ display: "flex" }}
-            onClick={() => {
-              handleGiveAffection("Hug");
-            }}
-          >
-            <Typography variant="h5"> Give 🤗</Typography>
-          </Button>
+          <span className="bg-gold m-4">
+            <Button
+              disabled={isLoading}
+              variant="contained"
+              sx={{
+                display: "flex",
+                width: "100%",
+                padding: "1rem",
+                color: "rgb(233 231 218)",
+                "&:hover": { backgroundColor: "rgb(55 63 39)" },
+              }}
+              onClick={() => {
+                handleGiveAffection("Hug");
+              }}
+            >
+              <Typography variant="h5"> Give 🤗</Typography>
+            </Button>
+          </span>
 
           <Typography className="text-Greenery" variant="body1">
             Cost: 20
           </Typography>
         </div>
         <div className="flex justify-center flex-col align-middle text-center">
-          <Button
-            disabled={isLoading}
-            variant="contained"
-            className="bg-gold hover:bg-Greenery p-4 m-2 text-daisy"
-            sx={{ display: "flex" }}
-            onClick={() => {
-              handleGiveAffection("Kiss");
-            }}
-          >
-            <Typography variant="h5"> Give 😘</Typography>
-          </Button>
+          <span className="bg-gold m-4">
+            <Button
+              disabled={isLoading}
+              variant="contained"
+              sx={{
+                display: "flex",
+                padding: "1rem",
+                width: "100%",
+                color: "rgb(233 231 218)",
+                "&:hover": { backgroundColor: "rgb(55 63 39)" },
+              }}
+              onClick={() => {
+                handleGiveAffection("Kiss");
+              }}
+            >
+              <Typography variant="h5"> Give 😘</Typography>
+            </Button>
+          </span>
           <Typography className="text-Greenery" variant="body1">
             Cost: 40
           </Typography>
         </div>
-      </Container>
+      </div>
       {isLoading ? <LinearProgress color="inherit" className="w-full" /> : null}
     </Container>
   );
